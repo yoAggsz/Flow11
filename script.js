@@ -37,3 +37,25 @@ btnChampions.addEventListener("click", function () {
 btnCarreira.addEventListener("click", function () {
     alert("Modo Carreira selecionado!");
 });
+
+const equipes = [
+    "Bastard München",
+    "PXG",
+    "Manshine City",
+    "FC Barcha",
+    "Ubers"
+];
+
+const btnRoletar = document.getElementById("btnRoletar");
+const equipeSorteada = document.getElementById("equipeSorteada");
+
+btnRoletar.addEventListener("click", function () {
+    const numeroAleatorio = Math.floor(
+        Math.random() * equipes.length
+    );
+
+    const equipe = equipes[numeroAleatorio];
+
+    equipeSorteada.textContent =
+        "Equipe sorteada: " + equipe;
+});
