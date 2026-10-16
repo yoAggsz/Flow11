@@ -1,12 +1,12 @@
 
-const btnIniciar = document.getElementById("btnIniciar");
 const menuInicial = document.getElementById("menuInicial");
 const menuModos = document.getElementById("menuModos");
 const menuTipos = document.getElementById("menuTipos");
+const menuChampions = document.getElementById("menuChampions");
 
+const btnIniciar = document.getElementById("btnIniciar");
 const btnClassico = document.getElementById("btnClassico");
 const btnAmigos = document.getElementById("btnAmigos");
-
 const btnCopa = document.getElementById("btnCopa");
 const btnChampions = document.getElementById("btnChampions");
 const btnCarreira = document.getElementById("btnCarreira");
@@ -30,7 +30,8 @@ btnCopa.addEventListener("click", function () {
 });
 
 btnChampions.addEventListener("click", function () {
-    alert("Modo Champions selecionado!");
+    menuTipos.hidden = true;
+    menuChampions.hidden = false;
 });
 
 btnCarreira.addEventListener("click", function () {
