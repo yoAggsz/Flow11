@@ -33,13 +33,14 @@ body {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding-top: clamp(32px, 8vh, 80px);
+    padding-top: 16px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
+
 
 /* Título e subtítulo */
 
@@ -71,11 +72,13 @@ body {
 
 /* Menu inicial */
 
+
 .menu-inicial {
     width: 100%;
     max-width: 420px;
-    margin-top: clamp(32px, 7vh, 64px);
+    margin-top: 24px;
 }
+
 
 .descricao {
     margin: 0 0 24px;
