@@ -183,3 +183,38 @@ body {
 [hidden] {
     display: none !important;
 }
+
+.menu-tipos {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.menu-tipos h2 {
+    color: #00aaff;
+    font-size: clamp(20px, 5vw, 28px);
+    margin-bottom: 24px;
+}
+
+.menu-tipos button {
+    width: 100%;
+    min-height: 52px;
+    margin-bottom: 14px;
+    padding: 14px 20px;
+    border: 1px solid #00aaff;
+    border-radius: 6px;
+    background: #101b2d;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu-tipos button:hover {
+    background: #173754;
+}
+
+[hidden] {
+    display: none !important;
+}
