@@ -16,7 +16,6 @@ const equipeSorteada = document.getElementById("equipeSorteada");
 const listaJogadores = document.getElementById("listaJogadores");
 const meuTime = document.getElementById("meuTime");
 
-// EQUIPES DISPONÍVEIS NA ROLETA
 const equipes = [
     "Bastard München",
     "PXG",
@@ -25,7 +24,6 @@ const equipes = [
     "Ubers"
 ];
 
-// ELENCOS INICIAIS
 const jogadoresPorEquipe = {
     "Bastard München": [
         { nome: "Noel Noa", overall: 100 },
@@ -56,17 +54,15 @@ const jogadoresPorEquipe = {
     ]
 };
 
-// TIME QUE O JOGADOR ESTÁ MONTANDO
 let timeEscolhido = [];
 let equipeAtual = null;
+let aguardandoEscolha = false;
 
-// ABRIR O MENU INICIAL
 btnIniciar.addEventListener("click", function () {
     menuInicial.hidden = true;
     menuModos.hidden = false;
 });
 
-// ABRIR OS MODOS DE JOGO
 btnClassico.addEventListener("click", function () {
     menuModos.hidden = true;
     menuTipos.hidden = false;
@@ -84,59 +80,77 @@ btnCarreira.addEventListener("click", function () {
     alert("Modo Carreira selecionado!");
 });
 
-// ABRIR O CHAMPIONS
 btnChampions.addEventListener("click", function () {
     menuTipos.hidden = true;
     menuChampions.hidden = false;
 
     timeEscolhido = [];
     equipeAtual = null;
+    aguardandoEscolha = false;
 
     atualizarMeuTime();
     listaJogadores.innerHTML = "";
+
     equipeSorteada.textContent =
         "Clique em RODAR ROLETA para sortear uma equipe.";
+
+    btnRoletar.disabled = false;
 });
 
-// GIRAR A ROLETA
 btnRoletar.addEventListener("click", function () {
-    if (timeEscolhido.length >= 11) {
-        equipeSorteada.textContent =
-            "Seu time já está completo!";
+    // Impede uma nova roleta antes de escolher um jogador.
+    if (aguardandoEscolha) {
         return;
     }
 
+    // Impede continuar depois de completar o time.
+    if (timeEscolhido.length >= 11) {
+        equipeSorteada.textContent = "TIME COMPLETO!";
+        btnRoletar.disabled = true;
+        return;
+    }
+
+    roletarEquipe();
+});
+
+function roletarEquipe() {
     const numeroAleatorio = Math.floor(
         Math.random() * equipes.length
     );
 
     equipeAtual = equipes[numeroAleatorio];
+    aguardandoEscolha = true;
 
     equipeSorteada.textContent =
-        "Equipe sorteada: " + equipeAtual;
+        "Equipe sorteada: " + equipeAtual +
+        " — escolha um jogador!";
+
+    btnRoletar.disabled = true;
 
     mostrarJogadores(equipeAtual);
-});
+}
 
-// MOSTRAR OS JOGADORES DA EQUIPE SORTEADA
 function mostrarJogadores(equipe) {
     listaJogadores.innerHTML = "";
 
     const jogadores = jogadoresPorEquipe[equipe];
 
-    if (!jogadores) {
+    if (!jogadores || jogadores.length === 0) {
         listaJogadores.textContent =
             "O elenco desta equipe ainda não foi cadastrado.";
+
+        // Libera a roleta para que seja possível continuar.
+        aguardandoEscolha = false;
+        btnRoletar.disabled = false;
         return;
     }
 
     jogadores.forEach(function (jogador) {
         const botao = document.createElement("button");
 
+        botao.type = "button";
         botao.textContent =
             jogador.nome + " — OVR " + jogador.overall;
-
-        botao.type = "button";
 
         const jaEscolhido = timeEscolhido.some(function (escolhido) {
             return escolhido.nome === jogador.nome;
@@ -144,21 +158,19 @@ function mostrarJogadores(equipe) {
 
         if (jaEscolhido) {
             botao.disabled = true;
-            botao.textContent += " — ESCOLHIDO";
+            botao.textContent += " — JÁ ESCOLHIDO";
         }
 
         botao.addEventListener("click", function () {
-            escolherJogador(jogador, botao);
+            escolherJogador(jogador);
         });
 
         listaJogadores.appendChild(botao);
     });
 }
 
-// ESCOLHER UM JOGADOR
-function escolherJogador(jogador, botao) {
-    if (timeEscolhido.length >= 11) {
-        alert("Seu time já tem 11 jogadores!");
+function escolherJogador(jogador) {
+    if (!aguardandoEscolha || timeEscolhido.length >= 11) {
         return;
     }
 
@@ -177,23 +189,30 @@ function escolherJogador(jogador, botao) {
         equipe: equipeAtual
     });
 
-    botao.disabled = true;
-    botao.textContent += " — ESCOLHIDO";
-
+    aguardandoEscolha = false;
     atualizarMeuTime();
 
-    if (timeEscolhido.length === 11) {
+    if (timeEscolhido.length >= 11) {
         equipeSorteada.textContent =
             "TIME COMPLETO! Você escolheu 11 jogadores.";
+
+        listaJogadores.innerHTML = "";
         btnRoletar.disabled = true;
-    } else {
-        equipeSorteada.textContent =
-            jogador.nome + " escolhido! " +
-            timeEscolhido.length + "/11 jogadores.";
+        return;
     }
+
+    // Mostra a escolha e sorteia a próxima equipe automaticamente.
+    equipeSorteada.textContent =
+        jogador.nome + " escolhido! Sorteando a próxima equipe...";
+
+    listaJogadores.innerHTML = "";
+    btnRoletar.disabled = true;
+
+    setTimeout(function () {
+        roletarEquipe();
+    }, 1000);
 }
 
-// ATUALIZAR A LISTA DO SEU TIME
 function atualizarMeuTime() {
     meuTime.innerHTML = "";
 
@@ -215,10 +234,4 @@ function atualizarMeuTime() {
 
         meuTime.appendChild(item);
     });
-
-    if (timeEscolhido.length >= 11) {
-        btnRoletar.disabled = true;
-    } else {
-        btnRoletar.disabled = false;
-    }
 }
