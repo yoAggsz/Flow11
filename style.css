@@ -16,3 +16,47 @@ p {
     color: #b8c7dc;
     font-size: 18px;
 }
+
+
+.inicio {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.inicio h1 {
+    color: #00aaff;
+    font-size: 42px;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 18px #0077ff66;
+}
+
+.inicio p {
+    color: #b8c7dc;
+    font-size: 16px;
+    margin-bottom: 28px;
+}
+
+#btnIniciar {
+    background: #00aaff;
+    color: #080b16;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnIniciar:hover {
+    background: #ffffff;
+    transform: scale(1.04);
+}
