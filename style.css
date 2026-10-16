@@ -1,62 +1,147 @@
-body {
-    background-color: #080b16;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding-top: 100px;
-}
 
-h1 {
-    color: #00aaff;
-    font-size: 48px;
-    letter-spacing: 5px;
-}
+/* Configurações gerais */
 
-p {
-    color: #b8c7dc;
-    font-size: 18px;
-}
-
-
-.inicio {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 24px;
+* {
     box-sizing: border-box;
 }
 
-.inicio h1 {
-    color: #00aaff;
-    font-size: 42px;
-    letter-spacing: 5px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 18px #0077ff66;
+html {
+    min-height: 100%;
+    background: #080b16;
 }
 
-.inicio p {
-    color: #b8c7dc;
-    font-size: 16px;
-    margin-bottom: 28px;
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 0 16px 32px;
+
+    background:
+        radial-gradient(
+            ellipse at top,
+            #10253e 0%,
+            #080b16 65%
+        );
+
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Área principal */
+
+.inicio {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: clamp(32px, 8vh, 80px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Título e subtítulo */
+
+.cabecalho {
+    width: 100%;
+}
+
+.cabecalho h1 {
+    margin: 0;
+
+    color: #00aaff;
+    font-size: clamp(32px, 7vw, 64px);
+    font-weight: 900;
+    letter-spacing: clamp(3px, 1vw, 8px);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+
+    text-shadow: 0 0 24px #008cff55;
+}
+
+.subtitulo {
+    margin: 14px 0 0;
+
+    color: #b8c7dc;
+    font-size: clamp(11px, 2.5vw, 15px);
+    letter-spacing: clamp(1px, 0.5vw, 3px);
+    line-height: 1.6;
+}
+
+/* Menu inicial */
+
+.menu-inicial {
+    width: 100%;
+    max-width: 420px;
+    margin-top: clamp(32px, 7vh, 64px);
+}
+
+.descricao {
+    margin: 0 0 24px;
+
+    color: #c7d2e2;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Botão principal */
 
 #btnIniciar {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+
+    border: 1px solid #38c5ff;
+    border-radius: 6px;
+
     background: #00aaff;
     color: #080b16;
-    border: none;
-    border-radius: 5px;
-    padding: 15px 32px;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
     cursor: pointer;
-    transition: 0.2s;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 #btnIniciar:hover {
-    background: #ffffff;
-    transform: scale(1.04);
+    background: #70d7ff;
+}
+
+#btnIniciar:active {
+    transform: scale(0.98);
+}
+
+#btnIniciar:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* Ajustes para telas pequenas */
+
+@media (max-width: 480px) {
+    body {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .inicio {
+        padding-top: 40px;
+    }
+
+    .menu-inicial {
+        margin-top: 36px;
+    }
+}
+
+/* Respeita a preferência por menos animações */
+
+@media (prefers-reduced-motion: reduce) {
+    #btnIniciar {
+        transition: none;
+    }
 }
