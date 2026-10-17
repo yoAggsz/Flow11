@@ -57,7 +57,7 @@ const jogadoresPorEquipe = {
     ],
 
     "PXG": [
-        { nome: "Julian Loki", overall: 99 },
+        { nome: "Julian Loki", overall: 96 },
         { nome: "Rin Itoshi", overall: 96 },
         { nome: "Ryusei Shidou", overall: 94 },
         { nome: "Charles Chevalier", overall: 87 },
@@ -71,7 +71,7 @@ const jogadoresPorEquipe = {
     ],
 
     "Manshine City": [
-        { nome: "Chris Prince", overall: 98 },
+        { nome: "Chris Prince", overall: 99 },
         { nome: "Seishiro Nagi", overall: 91 },
         { nome: "Agi", overall: 89 },
         { nome: "Hyoma Chigiri", overall: 88 },
@@ -85,7 +85,7 @@ const jogadoresPorEquipe = {
     ],
 
     "FC Barcha": [
-        { nome: "Lavinho", overall: 98 },
+        { nome: "Lavinho", overall: 97 },
         { nome: "Bunny Iglesias", overall: 92 },
         { nome: "Meguru Bachira", overall: 88 },
         { nome: "Eita Otoya", overall: 83 },
