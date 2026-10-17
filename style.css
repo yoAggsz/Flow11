@@ -1,220 +1,248 @@
 
-/* Configurações gerais */
-
+/* ===== CONFIGURAÇÕES GERAIS ===== */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html {
-    min-height: 100%;
-    background: #080b16;
+:root {
+    --fundo: #070b14;
+    --painel: #101827;
+    --painel-claro: #18243a;
+    --azul: #168cff;
+    --azul-claro: #54b5ff;
+    --branco: #f4f7ff;
+    --cinza: #aab6ca;
+    --borda: #263852;
+    --vermelho: #ff416c;
 }
 
 body {
-    margin: 0;
     min-height: 100vh;
-    min-height: 100dvh;
-    padding: 0 16px 32px;
-
     background:
-        radial-gradient(
-            ellipse at top,
-            #10253e 0%,
-            #080b16 65%
-        );
-
-    color: #ffffff;
+        radial-gradient(ellipse at top, #12294a 0%, transparent 55%),
+        var(--fundo);
+    color: var(--branco);
     font-family: Arial, Helvetica, sans-serif;
+    padding: 24px 14px 40px;
 }
 
-/* Área principal */
-
-.inicio {
+/* ===== ÁREA PRINCIPAL ===== */
+main {
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
-    padding-top: 16px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
 }
 
-
-/* Título e subtítulo */
-
-.cabecalho {
-    width: 100%;
-}
-
-.cabecalho h1 {
-    margin: 0;
-
-    color: #00aaff;
-    font-size: clamp(32px, 7vw, 64px);
+/* ===== TÍTULOS ===== */
+h1 {
+    color: var(--azul-claro);
+    font-size: clamp(2.2rem, 8vw, 4rem);
     font-weight: 900;
-    letter-spacing: clamp(3px, 1vw, 8px);
-    line-height: 1.15;
-    overflow-wrap: anywhere;
-
-    text-shadow: 0 0 24px #008cff55;
+    font-style: italic;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-shadow: 0 0 22px #168cff55;
 }
 
-.subtitulo {
-    margin: 14px 0 0;
+h2 {
+    font-size: clamp(1.6rem, 6vw, 2.5rem);
+    margin-bottom: 16px;
+    color: var(--azul-claro);
+    text-transform: uppercase;
+}
 
-    color: #b8c7dc;
-    font-size: clamp(11px, 2.5vw, 15px);
-    letter-spacing: clamp(1px, 0.5vw, 3px);
+h3 {
+    margin: 24px 0 14px;
+    font-size: 1.2rem;
+    color: var(--azul-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+p {
+    color: var(--cinza);
     line-height: 1.6;
+    margin-bottom: 12px;
 }
 
-/* Menu inicial */
-
-
-.menu-inicial {
+/* ===== MENUS E PAINÉIS ===== */
+section {
     width: 100%;
-    max-width: 420px;
-    margin-top: 24px;
+    margin: 20px auto 0;
+    padding: 24px;
+    background: var(--painel);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    box-shadow: 0 12px 35px #00000035;
+    animation: aparecer 0.3s ease;
 }
 
-
-.descricao {
-    margin: 0 0 24px;
-
-    color: #c7d2e2;
-    font-size: 16px;
-    line-height: 1.7;
+/* Não exibe seções ocultas pelo HTML */
+[hidden] {
+    display: none !important;
 }
 
-/* Botão principal */
-
-#btnIniciar {
+/* ===== BOTÕES ===== */
+button {
     width: 100%;
-    min-height: 52px;
-    padding: 14px 20px;
-
-    border: 1px solid #38c5ff;
-    border-radius: 6px;
-
-    background: #00aaff;
-    color: #080b16;
-
-    font-size: 15px;
+    min-height: 48px;
+    padding: 13px 16px;
+    margin: 7px 0;
+    border: 1px solid var(--azul);
+    border-radius: 9px;
+    background: linear-gradient(135deg, #1479e6, #0954a8);
+    color: white;
+    font-size: 0.95rem;
     font-weight: 800;
-    letter-spacing: 2px;
-
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-#btnIniciar:hover {
-    background: #70d7ff;
+button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #35a4ff, #1479e6);
+    box-shadow: 0 0 18px #168cff55;
+    transform: translateY(-2px);
 }
 
-#btnIniciar:active {
+button:active:not(:disabled) {
     transform: scale(0.98);
 }
 
-#btnIniciar:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 4px;
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
 }
 
-/* Ajustes para telas pequenas */
+/* ===== ROLETA ===== */
+#areaRoleta {
+    margin: 22px 0;
+    padding: 20px 14px;
+    border: 1px solid var(--azul);
+    border-radius: 12px;
+    background:
+        linear-gradient(135deg, #102a49, #101827);
+    box-shadow: inset 0 0 20px #168cff12;
+}
 
+#equipeSorteada {
+    color: var(--branco);
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+#btnRoletar {
+    max-width: 320px;
+    min-height: 56px;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+}
+
+/* ===== LISTA DE JOGADORES ===== */
+#listaJogadores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#listaJogadores:empty {
+    display: none;
+}
+
+#listaJogadores button {
+    height: 100%;
+    min-height: 62px;
+    margin: 0;
+    padding: 12px 8px;
+    background: var(--painel-claro);
+    border: 1px solid var(--borda);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+#listaJogadores button:hover:not(:disabled) {
+    background: #173b61;
+    border-color: var(--azul-claro);
+}
+
+#listaJogadores button:disabled {
+    background: #252d3a;
+    border-color: #424c5d;
+}
+
+/* ===== TIME ESCOLHIDO ===== */
+#meuTime {
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: #0a111e;
+    text-align: left;
+}
+
+#meuTime p {
+    padding: 9px 0;
+    margin: 0;
+    border-bottom: 1px solid #26385280;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+#meuTime p:last-child {
+    border-bottom: none;
+}
+
+/* ===== ANIMAÇÃO ===== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== CELULARES ===== */
 @media (max-width: 480px) {
     body {
-        padding-right: 20px;
-        padding-left: 20px;
+        padding: 16px 10px 28px;
     }
 
-    .inicio {
-        padding-top: 40px;
+    section {
+        padding: 18px 12px;
+        margin-top: 14px;
+        border-radius: 12px;
     }
 
-    .menu-inicial {
-        margin-top: 36px;
+    #listaJogadores {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
-}
 
-/* Respeita a preferência por menos animações */
-
-@media (prefers-reduced-motion: reduce) {
-    #btnIniciar {
-        transition: none;
+    #listaJogadores button {
+        min-height: 50px;
+        font-size: 0.9rem;
     }
-}
 
-.menu-modos {
-    width: 100%;
-    max-width: 420px;
-    margin-top: 24px;
-    text-align: center;
-}
+    #areaRoleta {
+        padding: 16px 10px;
+    }
 
-.menu-modos h2 {
-    color: #00aaff;
-    font-size: clamp(20px, 5vw, 28px);
-    margin-bottom: 24px;
-}
-
-.menu-modos button {
-    width: 100%;
-    min-height: 52px;
-    margin-bottom: 14px;
-    padding: 14px 20px;
-    border: 1px solid #00aaff;
-    border-radius: 6px;
-    background: #101b2d;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.menu-modos button:hover {
-    background: #173754;
-}
-
-[hidden] {
-    display: none !important;
-}
-
-.menu-tipos {
-    width: 100%;
-    max-width: 420px;
-    margin-top: 24px;
-    text-align: center;
-}
-
-.menu-tipos h2 {
-    color: #00aaff;
-    font-size: clamp(20px, 5vw, 28px);
-    margin-bottom: 24px;
-}
-
-.menu-tipos button {
-    width: 100%;
-    min-height: 52px;
-    margin-bottom: 14px;
-    padding: 14px 20px;
-    border: 1px solid #00aaff;
-    border-radius: 6px;
-    background: #101b2d;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.menu-tipos button:hover {
-    background: #173754;
-}
-
-[hidden] {
-    display: none !important;
+    #meuTime {
+        padding: 12px;
+    }
 }
