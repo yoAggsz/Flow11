@@ -17,6 +17,20 @@ const equipeSorteada = document.getElementById("equipeSorteada");
 const listaJogadores = document.getElementById("listaJogadores");
 const meuTime = document.getElementById("meuTime");
 
+const menuPartida = document.getElementById("menuPartida");
+
+const progressoPartidas = document.getElementById("progressoPartidas");
+const forcaMeuTime = document.getElementById("forcaMeuTime");
+const nomeAdversario = document.getElementById("nomeAdversario");
+const forcaAdversario = document.getElementById("forcaAdversario");
+const placarPartida = document.getElementById("placarPartida");
+const resultadoPartida = document.getElementById("resultadoPartida");
+
+const btnJogarPartida = document.getElementById("btnJogarPartida");
+const btnProximaPartida = document.getElementById("btnProximaPartida");
+const btnVoltarChampions = document.getElementById("btnVoltarChampions");
+
+
 // Equipes disponíveis na roleta.
 const equipes = [
     "Bastard München",
@@ -102,6 +116,11 @@ const jogadoresPorEquipe = {
 let timeEscolhido = [];
 let equipeAtual = null;
 let aguardandoEscolha = false;
+let adversariosRestantes = [];
+let adversarioAtual = null;
+let partidasVencidas = 0;
+let partidaFinalizada = false;
+
 
 // Esconde todos os menus.
 function esconderMenus() {
