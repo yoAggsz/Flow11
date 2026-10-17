@@ -44,24 +44,24 @@ const equipes = [
 const jogadoresPorEquipe = {
     "Bastard München": [
         { nome: "Noel Noa", overall: 100 },
-        { nome: "Michael Kaiser", overall: 98 },
-        { nome: "Alexis Ness", overall: 92 },
-        { nome: "Yoichi Isagi", overall: 88 },
-        { nome: "Rensuke Kunigami", overall: 85 },
-        { nome: "Kenyu Yukimiya", overall: 84 },
-        { nome: "Yo Hiori", overall: 83 },
-        { nome: "Gin Gagamaru", overall: 82 },
-        { nome: "Ranze Kurona", overall: 80 },
+        { nome: "Michael Kaiser", overall: 94 },
+        { nome: "Alexis Ness", overall: 86 },
+        { nome: "Yoichi Isagi", overall: 91 },
+        { nome: "Rensuke Kunigami", overall: 90 },
+        { nome: "Kenyu Yukimiya", overall: 89 },
+        { nome: "Yo Hiori", overall: 84 },
+        { nome: "Gin Gagamaru", overall: 85 },
+        { nome: "Ranze Kurona", overall: 83 },
         { nome: "Erik Gesner", overall: 80 },
-        { nome: "Benedict Grim", overall: 85 }
+        { nome: "Benedict Grim", overall: 82 }
     ],
 
     "PXG": [
         { nome: "Julian Loki", overall: 96 },
-        { nome: "Rin Itoshi", overall: 96 },
-        { nome: "Ryusei Shidou", overall: 94 },
+        { nome: "Rin Itoshi", overall: 93 },
+        { nome: "Ryusei Shidou", overall: 92 },
         { nome: "Charles Chevalier", overall: 87 },
-        { nome: "Tabito Karasu", overall: 86 },
+        { nome: "Tabito Karasu", overall: 89 },
         { nome: "Aoshi Tokimitsu", overall: 83 },
         { nome: "Jyubei Aryu", overall: 82 },
         { nome: "Zantetsu Tsurugi", overall: 80 },
@@ -86,7 +86,7 @@ const jogadoresPorEquipe = {
 
     "FC Barcha": [
         { nome: "Lavinho", overall: 97 },
-        { nome: "Bunny Iglesias", overall: 92 },
+        { nome: "Bunny Iglesias", overall: 95 },
         { nome: "Meguru Bachira", overall: 88 },
         { nome: "Eita Otoya", overall: 83 },
         { nome: "Miroku Darai", overall: 76 },
@@ -100,7 +100,7 @@ const jogadoresPorEquipe = {
 
     "Ubers": [
         { nome: "Marc Snuffy", overall: 98 },
-        { nome: "Don Lorenzo", overall: 96 },
+        { nome: "Don Lorenzo", overall: 93 },
         { nome: "Shoei Barou", overall: 94 },
         { nome: "Oliver Aiku", overall: 89 },
         { nome: "Jyubei Aryu", overall: 82 },
